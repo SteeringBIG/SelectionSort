@@ -6,28 +6,39 @@
     $massCount = count($mass);
     $i = 0;
     while ($i++ < $massCount) {
-        $mass = sortArray($mass, $massCount, $i);
+        echo '<br> ---------------------------------------- <br>';
+        $mass = sortArray($mass, $i, $massCount);
     }
 
-    echo '</pre>';
     //========================================
+    echo '</pre>';
 
-    function sortArray($mass, $massCount, $i)
+    function sortArray($mass, $i, $massCount)
     {
-        $key = $massCount;
-        while ($key > $i) {
-            $keyA = $key;
-            $keyB = $key - 1;
-            $a = $mass[$keyA];
-            $b = $mass[$keyB];
+        echo '<br>';
+        echo '- start -] ' . $i . ' [--';
 
-            if ($a < $b){
-                $mass[$key] = $b;
-                $mass[$key - 1] = $a;
+        $n  = $i;
+        $min = $i;
+
+        $a = $mass[$i];
+        $b = $mass[$i + 1];
+        while ($i < $massCount + 1) {
+            if ($a < $b) {
+                $min = $i;
             }
 
-            $key = $key - 1;
+            $a =
+            $b = $mass[$i + 1];
+
+            $i++;
+
         }
+        $n  = $mass[$n];
+        $mass[$i] = $mass[$min];
+        $mass[$min] = $n;
+
+        echo '<br>' . '- min -] ' . $min . ' [--' . '<br>';
         echo '<br>' . print_r($mass);
         return $mass;
     }
@@ -43,7 +54,7 @@
             $mass[$key] = rand($nStart, $nEnd);
         }
         echo '<br>' . print_r($mass) . '<br>';
-        echo '<br>-------<br>';
+        //echo '<br>-------<br>';
         return $mass;
     }
 ?>
