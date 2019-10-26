@@ -19,26 +19,23 @@
         echo '- start -] ' . $i . ' [--';
 
         $n  = $i;
+        $nz = $mass[$i];
         $min = $i;
 
         $a = $mass[$i];
-        $b = $mass[$i + 1];
-        while ($i < $massCount + 1) {
-            if ($a < $b) {
+        while ($i <= $massCount) {
+            if ($a > $mass[$i]) {
                 $min = $i;
+                $a = $mass[$i];
             }
-
-            $a =
-            $b = $mass[$i + 1];
-
             $i++;
-
         }
-        $n  = $mass[$n];
-        $mass[$i] = $mass[$min];
-        $mass[$min] = $n;
 
-        echo '<br>' . '- min -] ' . $min . ' [--' . '<br>';
+        $mass[$n] = $mass[$min];
+        $mass[$min] = $nz;
+
+        echo '<br>' . '- min z -] ' . $a . ' [--';
+        echo '<br>' . '- min   -] ' . $min . ' [--' . '<br>';
         echo '<br>' . print_r($mass);
         return $mass;
     }
